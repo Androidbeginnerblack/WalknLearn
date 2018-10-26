@@ -119,7 +119,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
             SharedPreferences.Editor editor = prefs.edit();
             editor.putString("current_user", name);
-            editor.putString("Current_email", email);
+            editor.putString("current_email", email);
             editor.commit();
 
         }
@@ -159,13 +159,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             cardView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Toast.makeText(MainActivity.this, "index Clicked: " + indexdisplay, Toast.LENGTH_SHORT).show();
                     if(indexdisplay == 0){
                         cardView.getContext().startActivity(new Intent(cardView.getContext(),Achievement.class));
                     }
                     //if the cardview index is 1
                     if(indexdisplay == 1){
-                        cardView.getContext().startActivity(new Intent(cardView.getContext(),YoutubeAPI.class));
+                        cardView.getContext().startActivity(new Intent(cardView.getContext(),YoutubeList.class));
                     }
 
                     else if(indexdisplay == 2){
@@ -173,6 +172,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     }
                     else if(indexdisplay == 3){
                          cardView.getContext().startActivity(new Intent(cardView.getContext(),Forum.class));
+                    }
+                    else if(indexdisplay == 4){
+                         cardView.getContext().startActivity(new Intent(cardView.getContext(),Bug_Report.class));
+                    }
+                    else if(indexdisplay == 5){
+                         cardView.getContext().startActivity(new Intent(cardView.getContext(),Concept.class));
                     }
                     else if(indexdisplay == 6){
                          //Exit the app

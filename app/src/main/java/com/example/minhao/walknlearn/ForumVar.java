@@ -2,13 +2,13 @@ package com.example.minhao.walknlearn;
 
 public class ForumVar {
     private String name;
-    private String birthday;
-    private String sex;
+    private String email;
+    private String content;
 
     public ForumVar(String name, String birthday, String sex) {
         this.name = name;
-        this.birthday = birthday;
-        this.sex = sex;
+        this.email = birthday;
+        this.content = sex;
     }
 
     public String getName() {
@@ -19,19 +19,19 @@ public class ForumVar {
         this.name = name;
     }
 
-    public String getBirthday() {
-        return birthday;
+    public String getEmail() {
+        return email;
     }
 
-    public void setBirthday(String birthday) {
-        this.birthday = birthday;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public String getSex() {
-        return sex;
+    public String getContent() {
+        return content;
     }
 
-    public void setSex(String sex) {
-        this.sex = sex;
+    public void setContent(String content) {
+        this.content = content;
     }
 }

@@ -1,5 +1,7 @@
 package com.example.minhao.walknlearn;
 
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -27,20 +29,22 @@ public class Forum extends AppCompatActivity {
         mText = (EditText)findViewById(R.id.texteditor);
         mListview = (ListView)findViewById(R.id.MessageList);
 
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        final String user_name = prefs.getString("current_user", "No login");
+        final String user_email = prefs.getString("current_email", "No email");
+
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String current_input = mText.getText().toString();
-
                 //Create a Object for the current user
-                ForumVar first = new ForumVar("John", "12-10", "Male");
-
                 ArrayList<ForumVar> forumlist = new ArrayList<>();
-
-                forumlist.add(first);
+                forumlist.add(new ForumVar(user_name, user_email, current_input));
 
                 ForumAdapter adapter = new ForumAdapter(getApplicationContext(), R.layout.list_item, forumlist);
                 mListview.setAdapter(adapter);
+
+                mText.setText("");
 
             }
         });

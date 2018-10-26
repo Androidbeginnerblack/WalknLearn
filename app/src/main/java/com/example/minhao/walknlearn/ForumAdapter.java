@@ -23,15 +23,14 @@ public class ForumAdapter extends ArrayAdapter<ForumVar> {
         mResource = resource;
     }
 
-
     @NonNull
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         String name = getItem(position).getName();
-        String birthday = getItem(position).getBirthday();
-        String sex = getItem(position).getSex();
+        String email = getItem(position).getEmail();
+        String content = getItem(position).getContent();
 
-        ForumVar forum1 = new ForumVar(name,birthday,sex);
+        ForumVar forum1 = new ForumVar(name,email,content);
 
         LayoutInflater inflater = LayoutInflater.from(mContext);
         convertView = inflater.inflate(mResource,parent,false);
@@ -42,8 +41,8 @@ public class ForumAdapter extends ArrayAdapter<ForumVar> {
         TextView tvDescription = (TextView) convertView.findViewById(R.id.textView5);
 
         textView.setText(name);
-        tvEmail.setText(birthday);
-        tvDescription.setText(sex);
+        tvEmail.setText(email);
+        tvDescription.setText(content);
 
         return convertView;
     }

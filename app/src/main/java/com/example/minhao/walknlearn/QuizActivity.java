@@ -15,6 +15,8 @@ public class QuizActivity extends AppCompatActivity {
     private Button mChoice0;
     private Button mChoice1;
     private Button mChoice2;
+    private TextView endText;
+    private Button quitbtn;
 
     private String mAnswer;
     private int mQuestionNumber = 0;
@@ -25,6 +27,11 @@ public class QuizActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
+
+        endText = (TextView)findViewById(R.id.textView8);
+        endText.setVisibility(View.GONE);
+        quitbtn = (Button)findViewById(R.id.quit_btn);
+        quitbtn.setVisibility(View.GONE);
 
         mQuestionView = (TextView)findViewById(R.id.textView4);
         mChoice0 = (Button) findViewById(R.id.btn2);
@@ -81,6 +88,13 @@ public class QuizActivity extends AppCompatActivity {
             }
         });
 
+        quitbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+
 
     }
 
@@ -94,17 +108,23 @@ public class QuizActivity extends AppCompatActivity {
         mQuestionNumber++;
 
         //if the question reach the end
-        if(mQuestionNumber == 4){
+        if(mQuestionNumber == 11){
             mChoice0.setVisibility(View.GONE);
             mQuestionView.setVisibility(View.GONE);
             mChoice1.setVisibility(View.GONE);
             mChoice2.setVisibility(View.GONE);
 
+            endText.setVisibility(View.VISIBLE);
+            quitbtn.setVisibility(View.VISIBLE);
+
+            endText.setVisibility(View.VISIBLE);
             SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
             SharedPreferences.Editor scoreholder = prefs.edit();
             scoreholder.putInt("new_score",score);
             scoreholder.commit();
         }
+
+
     }
 
 }
