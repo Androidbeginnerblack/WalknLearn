@@ -4,12 +4,27 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+/*
+    Created by Niko Li
+    Date: 25/10/2018
+ */
+
+/*
+    Quiz Activity is designed to test user progress performance
+    Correct and wrong answer will triger Toast Message
+    Result can be view in Achievement
+ */
+
 public class QuizActivity extends AppCompatActivity {
+
+    private final String TAG = "QuizActivity";
+
     private Library library = new Library();
     private TextView mQuestionView;
     private Button mChoice0;
@@ -27,18 +42,21 @@ public class QuizActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
-
+        Log.d(TAG,"QuizActivity onCreated");
+        //These view will only be shown after quiz is finish
         endText = (TextView)findViewById(R.id.textView8);
         endText.setVisibility(View.GONE);
         quitbtn = (Button)findViewById(R.id.quit_btn);
         quitbtn.setVisibility(View.GONE);
-
+        //View of questions and choice
         mQuestionView = (TextView)findViewById(R.id.textView4);
         mChoice0 = (Button) findViewById(R.id.btn2);
         mChoice1 = (Button) findViewById(R.id.btn3);
         mChoice2 = (Button) findViewById(R.id.btn4);
+        //Update question from library
         updatequestion();
 
+        //Three button onClick section to define user selection
         mChoice0.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -88,16 +106,17 @@ public class QuizActivity extends AppCompatActivity {
             }
         });
 
+        //Clicking on quit button will finish activity (Back to MainActivity)
         quitbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Log.d(TAG,"Quiz Activity Finish, return to MainActivity");
                 finish();
             }
         });
-
-
     }
 
+    // Update question and answer everytime user summit an answer
     private void updatequestion(){
 
         mQuestionView.setText(library.getQuestion(mQuestionNumber));
@@ -105,10 +124,12 @@ public class QuizActivity extends AppCompatActivity {
         mChoice1.setText(library.getChoice1(mQuestionNumber));
         mChoice2.setText(library.getChoice2(mQuestionNumber));
         mAnswer = library.getCorrectAnswer(mQuestionNumber);
+        //Incrementing counter
         mQuestionNumber++;
 
         //if the question reach the end
         if(mQuestionNumber == 11){
+            Log.d(TAG,"Quiz Completed");
             mChoice0.setVisibility(View.GONE);
             mQuestionView.setVisibility(View.GONE);
             mChoice1.setVisibility(View.GONE);
@@ -118,6 +139,8 @@ public class QuizActivity extends AppCompatActivity {
             quitbtn.setVisibility(View.VISIBLE);
 
             endText.setVisibility(View.VISIBLE);
+
+            //Save Score for Achievement Activity
             SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
             SharedPreferences.Editor scoreholder = prefs.edit();
             scoreholder.putInt("new_score",score);

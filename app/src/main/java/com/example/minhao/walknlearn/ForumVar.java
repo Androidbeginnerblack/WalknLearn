@@ -1,14 +1,23 @@
 package com.example.minhao.walknlearn;
 
+/*
+    Created by Niko Li
+    Date: 25/10/2018
+ */
+
+/*
+    Forum class, used for creating object into adapter
+ */
+
 public class ForumVar {
     private String name;
     private String email;
     private String content;
 
-    public ForumVar(String name, String birthday, String sex) {
+    public ForumVar(String name, String email, String content) {
         this.name = name;
-        this.email = birthday;
-        this.content = sex;
+        this.email = email;
+        this.content = content;
     }
 
     public String getName() {

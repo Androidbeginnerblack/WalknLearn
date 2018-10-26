@@ -3,15 +3,25 @@ package com.example.minhao.walknlearn;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
+
+/*
+    Created by Niko Li
+    Date: 25/10/2018
+ */
+
+/*
+    Youtube listview before playing specific videos
+ */
 
 public class YoutubeList extends AppCompatActivity {
 
     String courses [] = new String []{"INFS2608","Not Available","Not Available","Not Available"};
+    private final String TAG = "YoutubeList";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +35,7 @@ public class YoutubeList extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 if(i == 0){
+                    Log.d(TAG,"Play INFS2608 Video.");
                     startActivity(new Intent(getApplicationContext(),YoutubeAPI.class));
                 }
             }

@@ -1,5 +1,13 @@
 package com.example.minhao.walknlearn;
 
+/*
+    Created by Niko Li
+    Date: 25/10/2018
+ */
+
+/*
+    Configure API_Key from Google API Console, using package name & SHA1
+ */
 public class YoutubeConfigure {
     public YoutubeConfigure() {
     }

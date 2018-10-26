@@ -1,5 +1,14 @@
 package com.example.minhao.walknlearn;
 
+/*
+    Created by Niko Li
+    Date: 25/10/2018
+ */
+
+/*
+    Quiz Library
+ */
+
 public class Library {
 
     private String questions [] = {
