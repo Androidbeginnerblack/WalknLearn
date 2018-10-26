@@ -1,5 +1,7 @@
 package com.example.minhao.walknlearn;
 
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -97,6 +99,11 @@ public class QuizActivity extends AppCompatActivity {
             mQuestionView.setVisibility(View.GONE);
             mChoice1.setVisibility(View.GONE);
             mChoice2.setVisibility(View.GONE);
+
+            SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+            SharedPreferences.Editor scoreholder = prefs.edit();
+            scoreholder.putInt("new_score",score);
+            scoreholder.commit();
         }
     }
 

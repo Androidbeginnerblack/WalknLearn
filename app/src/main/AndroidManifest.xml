@@ -20,8 +20,8 @@
         </activity>
         <activity android:name=".YoutubeAPI" />
         <activity android:name=".QuizActivity" />
-        <activity android:name=".Forum" />
-        <activity android:name=".Achievement"></activity>
+        <activity android:name=".Achievement" />
+        <activity android:name=".Forum"></activity>
     </application>
 
 </manifest>

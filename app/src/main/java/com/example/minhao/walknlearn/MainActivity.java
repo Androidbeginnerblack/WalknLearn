@@ -160,7 +160,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 @Override
                 public void onClick(View view) {
                     Toast.makeText(MainActivity.this, "index Clicked: " + indexdisplay, Toast.LENGTH_SHORT).show();
-                    //Brench instructions
+                    if(indexdisplay == 0){
+                        cardView.getContext().startActivity(new Intent(cardView.getContext(),Achievement.class));
+                    }
                     //if the cardview index is 1
                     if(indexdisplay == 1){
                         cardView.getContext().startActivity(new Intent(cardView.getContext(),YoutubeAPI.class));
